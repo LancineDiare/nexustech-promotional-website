@@ -1,4 +1,5 @@
-// useState stores the current form step, form values, and submission status.
+// useState stores the current form step, form values, submission status,
+// and the stable reference number generated after submission.
 import { useState } from "react";
 
 // Initial values make it easy to reset the entire form.
@@ -20,6 +21,9 @@ function SandboxAccess() {
   const [formError, setFormError] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  // Store the reference after submission so it remains stable during re-renders.
+  const [submissionReference, setSubmissionReference] = useState("");
+
   // Update text fields, select fields, and the consent checkbox.
   function handleInputChange(event) {
     const { name, value, type, checked } = event.target;
@@ -37,10 +41,10 @@ function SandboxAccess() {
   function validateCurrentStep() {
     if (
       currentStep === 1 &&
-      (!formData.fullName ||
-        !formData.workEmail ||
-        !formData.companyName ||
-        !formData.companyDomain)
+      (!formData.fullName.trim() ||
+        !formData.workEmail.trim() ||
+        !formData.companyName.trim() ||
+        !formData.companyDomain.trim())
     ) {
       setFormError("Please complete all company and contact fields.");
       return false;
@@ -49,7 +53,7 @@ function SandboxAccess() {
     if (
       currentStep === 2 &&
       (!formData.role ||
-        !formData.currentStack ||
+        !formData.currentStack.trim() ||
         !formData.employeeCount)
     ) {
       setFormError("Please complete all business profile fields.");
@@ -59,17 +63,20 @@ function SandboxAccess() {
     return true;
   }
 
+  // Continue to the next step after successful validation.
   function goToNextStep() {
     if (validateCurrentStep()) {
       setCurrentStep((step) => Math.min(step + 1, 3));
     }
   }
 
+  // Return to the previous step.
   function goToPreviousStep() {
     setFormError("");
     setCurrentStep((step) => Math.max(step - 1, 1));
   }
 
+  // Validate and process the completed sandbox request.
   function handleSubmit(event) {
     event.preventDefault();
 
@@ -85,6 +92,15 @@ function SandboxAccess() {
       return;
     }
 
+    /*
+      Generate the reference inside the submit event instead of JSX rendering.
+
+      Date.now() is allowed here because event handlers run in response to
+      user actions. The generated value is then stored in React state.
+    */
+    const referenceNumber = `NT-${Date.now().toString().slice(-6)}`;
+
+    setSubmissionReference(referenceNumber);
     setFormError("");
     setIsSubmitted(true);
   }
@@ -94,6 +110,7 @@ function SandboxAccess() {
     setCurrentStep(1);
     setFormData(initialFormData);
     setFormError("");
+    setSubmissionReference("");
     setIsSubmitted(false);
   }
 
@@ -107,7 +124,9 @@ function SandboxAccess() {
 
               <h2>
                 Experience NexusTech with a{" "}
-                <span className="gradient-text">14-day guided sandbox</span>
+                <span className="gradient-text">
+                  14-day guided sandbox
+                </span>
               </h2>
 
               <p>
@@ -293,6 +312,7 @@ function SandboxAccess() {
                               value={formData.companyDomain}
                               onChange={handleInputChange}
                               placeholder="company.com"
+                              autoComplete="url"
                               required
                             />
                           </div>
@@ -323,19 +343,27 @@ function SandboxAccess() {
                               required
                             >
                               <option value="">Select your role</option>
+
                               <option value="Executive">
                                 Executive or business owner
                               </option>
+
                               <option value="IT Manager">
                                 IT manager
                               </option>
+
                               <option value="Operations Manager">
                                 Operations manager
                               </option>
-                              <option value="HR Manager">HR manager</option>
+
+                              <option value="HR Manager">
+                                HR manager
+                              </option>
+
                               <option value="Finance Manager">
                                 Finance manager
                               </option>
+
                               <option value="Other">Other</option>
                             </select>
                           </div>
@@ -357,10 +385,12 @@ function SandboxAccess() {
                               required
                             >
                               <option value="">Select a range</option>
-                              <option value="1-50">1–50</option>
-                              <option value="51-250">51–250</option>
-                              <option value="251-1000">251–1,000</option>
-                              <option value="1001+">More than 1,000</option>
+                              <option value="1-50">1-50</option>
+                              <option value="51-250">51-250</option>
+                              <option value="251-1000">251-1,000</option>
+                              <option value="1001+">
+                                More than 1,000
+                              </option>
                             </select>
                           </div>
 
@@ -387,7 +417,7 @@ function SandboxAccess() {
                       </div>
                     )}
 
-                    {/* Step 3: Goal and consent */}
+                    {/* Step 3: Business goal, summary, and consent */}
                     {currentStep === 3 && (
                       <div className="form-step">
                         <div className="form-step-heading">
@@ -410,24 +440,32 @@ function SandboxAccess() {
                           onChange={handleInputChange}
                           required
                         >
-                          <option value="">Select your primary goal</option>
+                          <option value="">
+                            Select your primary goal
+                          </option>
+
                           <option value="Process automation">
                             Automate business processes
                           </option>
+
                           <option value="System integration">
                             Integrate disconnected systems
                           </option>
+
                           <option value="Analytics">
                             Improve reporting and analytics
                           </option>
+
                           <option value="Branch management">
                             Manage multiple branches
                           </option>
+
                           <option value="HR modernization">
                             Modernize HR and payroll
                           </option>
                         </select>
 
+                        {/* Review the main information before submission */}
                         <div className="request-summary">
                           <h4>Request summary</h4>
 
@@ -438,8 +476,18 @@ function SandboxAccess() {
                             </div>
 
                             <div>
+                              <dt>Work email</dt>
+                              <dd>{formData.workEmail}</dd>
+                            </div>
+
+                            <div>
                               <dt>Company</dt>
                               <dd>{formData.companyName}</dd>
+                            </div>
+
+                            <div>
+                              <dt>Company domain</dt>
+                              <dd>{formData.companyDomain}</dd>
                             </div>
 
                             <div>
@@ -449,11 +497,22 @@ function SandboxAccess() {
 
                             <div>
                               <dt>Company size</dt>
-                              <dd>{formData.employeeCount} employees</dd>
+                              <dd>
+                                {formData.employeeCount} employees
+                              </dd>
+                            </div>
+
+                            <div>
+                              <dt>Primary goal</dt>
+                              <dd>
+                                {formData.primaryGoal ||
+                                  "Not yet selected"}
+                              </dd>
                             </div>
                           </dl>
                         </div>
 
+                        {/* Data-use consent */}
                         <div className="form-check consent-check">
                           <input
                             id="consent"
@@ -477,7 +536,7 @@ function SandboxAccess() {
                       </div>
                     )}
 
-                    {/* Display validation feedback when required fields are missing. */}
+                    {/* Display validation feedback */}
                     {formError && (
                       <div className="form-error" role="alert">
                         <i className="bi bi-exclamation-circle"></i>
@@ -485,6 +544,7 @@ function SandboxAccess() {
                       </div>
                     )}
 
+                    {/* Previous, next, and submit controls */}
                     <div className="form-navigation">
                       {currentStep > 1 ? (
                         <button
@@ -509,7 +569,10 @@ function SandboxAccess() {
                           <i className="bi bi-arrow-right ms-2"></i>
                         </button>
                       ) : (
-                        <button type="submit" className="btn btn-neon">
+                        <button
+                          type="submit"
+                          className="btn btn-neon"
+                        >
                           Submit Request
                           <i className="bi bi-send ms-2"></i>
                         </button>
@@ -519,7 +582,7 @@ function SandboxAccess() {
                 </>
               ) : (
                 /* Submission confirmation */
-                <div className="submission-success">
+                <div className="submission-success" role="status">
                   <div className="success-icon">
                     <i className="bi bi-check-lg"></i>
                   </div>
@@ -530,15 +593,15 @@ function SandboxAccess() {
 
                   <p>
                     Your sandbox request for {formData.companyName} has been
-                    recorded successfully. This frontend demonstration does not
-                    send information to a real server.
+                    recorded successfully. This frontend demonstration does
+                    not send information to a real server.
                   </p>
 
                   <div className="success-reference">
                     <span>Demo reference</span>
-                    <strong>
-                      NT-{Date.now().toString().slice(-6)}
-                    </strong>
+
+                    {/* Display the stable value stored during submission */}
+                    <strong>{submissionReference}</strong>
                   </div>
 
                   <button
