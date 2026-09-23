@@ -9,6 +9,7 @@ import FeatureComparisonMatrix from "./components/FeatureComparisonMatrix";
 import ClientProofCarousel from "./components/ClientProofCarousel";
 import ProposalGenerator from "./components/ProposalGenerator";
 import SandboxAccess from "./components/SandboxAccess";
+import Footer from "./components/Footer";
 import StickyConfiguratorBar from "./components/StickyConfiguratorBar";
 
 // Default configuration used when the website first loads.
@@ -34,7 +35,7 @@ const initialConfiguration = {
 };
 
 function App() {
-  // Store the selected plan and modules at the application level.
+  // Store the selected configuration at the application level.
   const [configuration, setConfiguration] = useState(
     initialConfiguration,
   );
@@ -45,9 +46,7 @@ function App() {
 
       <main>
         <HeroSection />
-
         <ProductShowcase />
-
         <InteractiveROICalculator />
 
         <ModuleConfigurator
@@ -55,15 +54,13 @@ function App() {
         />
 
         <FeatureComparisonMatrix />
-
         <ClientProofCarousel />
-
         <ProposalGenerator configuration={configuration} />
-
         <SandboxAccess />
       </main>
 
-      {/* Persistent conversion bar controlled by the scroll position */}
+      <Footer />
+
       <StickyConfiguratorBar configuration={configuration} />
     </>
   );
