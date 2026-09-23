@@ -2082,3 +2082,359 @@ a {
     display: none;
   }
 }
+
+/* =========================
+   SANDBOX ACCESS
+   ========================= */
+
+.sandbox-section {
+  position: relative;
+}
+
+.sandbox-cta {
+  padding: 50px;
+  background:
+    radial-gradient(
+      circle at right,
+      rgba(0, 240, 255, 0.12),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at left,
+      rgba(124, 58, 237, 0.13),
+      transparent 35%
+    ),
+    var(--color-glass);
+}
+
+.sandbox-cta h2 {
+  max-width: 800px;
+  margin-bottom: 18px;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+}
+
+.sandbox-cta p {
+  max-width: 780px;
+  color: var(--color-muted);
+  line-height: 1.8;
+}
+
+.sandbox-benefits {
+  display: flex;
+  margin-top: 25px;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.sandbox-benefits span {
+  color: var(--color-text);
+  font-size: 0.8rem;
+}
+
+.sandbox-benefits i {
+  margin-right: 6px;
+  color: #4ade80;
+}
+
+.cta-note {
+  display: block;
+  margin-top: 12px;
+  color: var(--color-muted);
+  font-size: 0.68rem;
+}
+
+/* =========================
+   SANDBOX MODAL
+   ========================= */
+
+.sandbox-modal {
+  color: var(--color-text);
+  background: #101521;
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+}
+
+.sandbox-modal .modal-header {
+  padding: 22px 25px;
+  border-color: var(--color-border);
+}
+
+.modal-label {
+  color: var(--color-cyan);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sandbox-modal .modal-title {
+  margin-top: 5px;
+  font-size: 1.35rem;
+}
+
+.sandbox-modal .modal-body {
+  padding: 30px;
+}
+
+/* Form progress */
+.form-progress {
+  position: relative;
+  display: flex;
+  max-width: 520px;
+  margin: 0 auto 35px;
+  justify-content: space-between;
+}
+
+.form-progress::before {
+  position: absolute;
+  top: 17px;
+  right: 12%;
+  left: 12%;
+  height: 2px;
+  content: "";
+  background: var(--color-border);
+}
+
+.progress-step {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  flex-direction: column;
+  color: var(--color-muted);
+}
+
+.progress-step > span {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  background: #171d2a;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  place-items: center;
+}
+
+.progress-step small {
+  font-size: 0.65rem;
+}
+
+.progress-step.active > span {
+  color: var(--color-background);
+  font-weight: 700;
+  background: var(--color-cyan);
+  border-color: var(--color-cyan);
+}
+
+.progress-step.active small {
+  color: var(--color-cyan);
+}
+
+/* Form fields */
+.form-step-heading {
+  margin-bottom: 24px;
+}
+
+.form-step-heading span {
+  color: var(--color-cyan);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.form-step-heading h3 {
+  margin-top: 5px;
+  font-size: 1.35rem;
+}
+
+.sandbox-modal .form-label {
+  color: var(--color-text);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.custom-input {
+  padding: 12px 14px;
+  color: var(--color-white);
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--color-border);
+}
+
+.custom-input:focus {
+  color: var(--color-white);
+  background: rgba(255, 255, 255, 0.055);
+  border-color: var(--color-cyan);
+  box-shadow: 0 0 0 0.2rem rgba(0, 240, 255, 0.1);
+}
+
+.custom-input::placeholder {
+  color: #64748b;
+}
+
+.form-select.custom-input {
+  color-scheme: dark;
+}
+
+.form-select.custom-input option {
+  color: var(--color-white);
+  background: #101521;
+}
+
+.request-summary {
+  padding: 20px;
+  margin-bottom: 22px;
+  background: rgba(0, 240, 255, 0.04);
+  border: 1px solid rgba(0, 240, 255, 0.16);
+  border-radius: 12px;
+}
+
+.request-summary h4 {
+  margin-bottom: 15px;
+  font-size: 1rem;
+}
+
+.request-summary dl {
+  margin: 0;
+}
+
+.request-summary dl div {
+  display: flex;
+  padding: 8px 0;
+  justify-content: space-between;
+  gap: 15px;
+  border-top: 1px solid var(--color-border);
+}
+
+.request-summary dt,
+.request-summary dd {
+  margin: 0;
+  font-size: 0.75rem;
+}
+
+.request-summary dt {
+  color: var(--color-muted);
+  font-weight: 500;
+}
+
+.request-summary dd {
+  color: var(--color-white);
+  text-align: right;
+}
+
+.consent-check {
+  padding: 17px 17px 17px 42px;
+  background: rgba(124, 58, 237, 0.07);
+  border: 1px solid rgba(124, 58, 237, 0.2);
+  border-radius: 10px;
+}
+
+.consent-check .form-check-input {
+  margin-left: -25px;
+}
+
+.consent-check .form-check-label {
+  color: var(--color-muted);
+  font-size: 0.74rem;
+  line-height: 1.6;
+}
+
+.form-error {
+  display: flex;
+  padding: 12px 14px;
+  margin-top: 20px;
+  gap: 8px;
+  align-items: center;
+  color: #fecdd3;
+  font-size: 0.78rem;
+  background: rgba(244, 63, 94, 0.08);
+  border: 1px solid rgba(244, 63, 94, 0.25);
+  border-radius: 9px;
+}
+
+.form-navigation {
+  display: flex;
+  padding-top: 22px;
+  margin-top: 25px;
+  justify-content: space-between;
+  border-top: 1px solid var(--color-border);
+}
+
+/* Submission confirmation */
+.submission-success {
+  max-width: 560px;
+  padding: 30px 0;
+  margin: auto;
+  text-align: center;
+}
+
+.success-icon {
+  display: grid;
+  width: 75px;
+  height: 75px;
+  margin: 0 auto 20px;
+  color: var(--color-background);
+  font-size: 2rem;
+  background: var(--color-cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.25);
+  place-items: center;
+}
+
+.submission-success > span {
+  color: var(--color-cyan);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.submission-success h3 {
+  margin: 8px 0 13px;
+  font-size: 2rem;
+}
+
+.submission-success p {
+  color: var(--color-muted);
+  line-height: 1.7;
+}
+
+.success-reference {
+  padding: 15px;
+  margin: 22px 0;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+}
+
+.success-reference span,
+.success-reference strong {
+  display: block;
+}
+
+.success-reference span {
+  color: var(--color-muted);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+}
+
+.success-reference strong {
+  margin-top: 5px;
+  color: var(--color-white);
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 767px) {
+  .sandbox-cta {
+    padding: 30px 20px;
+    text-align: center;
+  }
+
+  .sandbox-benefits {
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .sandbox-modal .modal-body {
+    padding: 22px 17px;
+  }
+}
+

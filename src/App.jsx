@@ -5,6 +5,7 @@ import InteractiveROICalculator from "./components/InteractiveROICalculator";
 import ModuleConfigurator from "./components/ModuleConfigurator";
 import FeatureComparisonMatrix from "./components/FeatureComparisonMatrix";
 import ClientProofCarousel from "./components/ClientProofCarousel";
+import SandboxAccess from "./components/SandboxAccess";
 
 // App determines the order of the promotional website sections.
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <ModuleConfigurator />
         <FeatureComparisonMatrix />
         <ClientProofCarousel />
+        <SandboxAccess />
       </main>
     </>
   );
