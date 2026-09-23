@@ -1,0 +1,146 @@
+/* Import modern fonts from Google Fonts. */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap");
+
+/* Store the website's main colors as reusable CSS variables. */
+:root {
+  --color-background: #0b0f19;
+  --color-background-light: #111827;
+  --color-cyan: #00f0ff;
+  --color-violet: #7c3aed;
+  --color-white: #ffffff;
+  --color-text: #cbd5e1;
+  --color-muted: #94a3b8;
+  --color-glass: rgba(255, 255, 255, 0.05);
+  --color-border: rgba(255, 255, 255, 0.12);
+  --font-primary: "Inter", sans-serif;
+  --font-heading: "Space Grotesk", sans-serif;
+}
+
+/* Reset the browser's default spacing and sizing behavior. */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Enable smooth movement when navigation links are selected. */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Apply the main dark theme to the entire page. */
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: var(--color-text);
+  font-family: var(--font-primary);
+  background:
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(124, 58, 237, 0.15),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 85% 10%,
+      rgba(0, 240, 255, 0.1),
+      transparent 25%
+    ),
+    var(--color-background);
+}
+
+/* Use the heading font consistently. */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-white);
+  font-family: var(--font-heading);
+}
+
+/* Remove default link underlines. */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Make buttons feel responsive to user interaction. */
+button,
+a {
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+/* Provide consistent vertical spacing for website sections. */
+.section-padding {
+  padding: 100px 0;
+}
+
+/* Apply a reusable transparent glass appearance. */
+.glass-panel {
+  background: var(--color-glass);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+/* Create the main cyan-to-violet gradient text effect. */
+.gradient-text {
+  color: transparent;
+  background: linear-gradient(
+    90deg,
+    var(--color-cyan),
+    var(--color-violet)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+/* Main glowing button used for important calls to action. */
+.btn-neon {
+  padding: 12px 24px;
+  color: var(--color-background);
+  font-weight: 700;
+  background: var(--color-cyan);
+  border: 1px solid var(--color-cyan);
+  border-radius: 10px;
+  box-shadow: 0 0 24px rgba(0, 240, 255, 0.25);
+}
+
+/* Lift the neon button slightly when the user hovers over it. */
+.btn-neon:hover {
+  color: var(--color-background);
+  background: #66f7ff;
+  border-color: #66f7ff;
+  transform: translateY(-2px);
+}
+
+/* Secondary transparent button. */
+.btn-outline-neon {
+  padding: 12px 24px;
+  color: var(--color-cyan);
+  font-weight: 700;
+  background: transparent;
+  border: 1px solid var(--color-cyan);
+  border-radius: 10px;
+}
+
+/* Add a subtle cyan surface on hover. */
+.btn-outline-neon:hover {
+  color: var(--color-white);
+  background: rgba(0, 240, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Improve section spacing on tablets and mobile devices. */
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 70px 0;
+  }
+}
