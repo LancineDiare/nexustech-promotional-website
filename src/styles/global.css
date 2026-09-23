@@ -2617,3 +2617,149 @@ a {
     flex-direction: column;
   }
 }
+
+/* =========================
+   STICKY CONFIGURATOR BAR
+   ========================= */
+
+.sticky-configurator-bar {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1035;
+  padding: 12px 0;
+  pointer-events: none;
+  background: rgba(7, 11, 19, 0.94);
+  border-top: 1px solid rgba(0, 240, 255, 0.22);
+  box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(18px);
+  opacity: 0;
+  transform: translateY(110%);
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+}
+
+/* Display the bar after the scroll requirement is reached. */
+.sticky-configurator-bar.visible {
+  pointer-events: auto;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sticky-configurator-content {
+  display: flex;
+  gap: 30px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Plan and price information */
+.sticky-plan,
+.sticky-detail {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.sticky-plan-icon {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  color: var(--color-background);
+  background: linear-gradient(
+    135deg,
+    var(--color-cyan),
+    var(--color-violet)
+  );
+  border-radius: 10px;
+  place-items: center;
+}
+
+.sticky-detail > i {
+  color: var(--color-cyan);
+  font-size: 1.15rem;
+}
+
+.sticky-plan span,
+.sticky-plan strong,
+.sticky-detail span,
+.sticky-detail strong {
+  display: block;
+}
+
+.sticky-plan span,
+.sticky-detail span {
+  color: var(--color-muted);
+  font-size: 0.65rem;
+}
+
+.sticky-plan strong,
+.sticky-detail strong {
+  margin-top: 2px;
+  color: var(--color-white);
+  font-size: 0.82rem;
+}
+
+.sticky-price strong {
+  color: var(--color-cyan);
+}
+
+.sticky-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.sticky-actions .btn {
+  padding: 9px 16px;
+  font-size: 0.78rem;
+}
+
+/* Tablet adjustments */
+@media (max-width: 991px) {
+  .sticky-detail {
+    display: none;
+  }
+
+  .sticky-configurator-content {
+    gap: 15px;
+  }
+}
+
+/* Mobile layout */
+@media (max-width: 576px) {
+  .sticky-configurator-bar {
+    padding: 9px 0;
+  }
+
+  .sticky-plan-icon {
+    display: none;
+  }
+
+  .sticky-plan span {
+    display: none;
+  }
+
+  .sticky-plan strong {
+    max-width: 90px;
+    overflow: hidden;
+    font-size: 0.75rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .sticky-actions {
+    margin-left: auto;
+    gap: 7px;
+  }
+
+  .sticky-actions .btn {
+    padding: 8px 10px;
+    font-size: 0.68rem;
+  }
+
+  .sticky-actions .btn i {
+    display: none;
+  }
+}
