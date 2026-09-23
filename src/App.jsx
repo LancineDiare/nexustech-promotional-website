@@ -1,8 +1,9 @@
-// Import the reusable page components.
+// Import the reusable website components.
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
+import ProductShowcase from "./components/ProductShowcase";
 
-// App controls the main structure of the website.
+// App controls the order of the website sections.
 function App() {
   return (
     <>
@@ -10,6 +11,7 @@ function App() {
 
       <main>
         <HeroSection />
+        <ProductShowcase />
       </main>
     </>
   );
