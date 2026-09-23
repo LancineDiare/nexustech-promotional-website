@@ -2438,3 +2438,182 @@ a {
   }
 }
 
+/* =========================
+   PROPOSAL GENERATOR
+   ========================= */
+
+.proposal-section {
+  background: rgba(255, 255, 255, 0.015);
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.proposal-container {
+  padding: 45px;
+}
+
+.proposal-preview {
+  height: 100%;
+  padding: 30px;
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(0, 240, 255, 0.12),
+      transparent 35%
+    ),
+    rgba(4, 8, 16, 0.65);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  border-radius: 17px;
+}
+
+.proposal-preview-label,
+.proposal-form-heading span {
+  color: var(--color-cyan);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.proposal-preview h3 {
+  margin: 7px 0 22px;
+  font-size: 1.8rem;
+}
+
+.proposal-price {
+  padding: 20px 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.proposal-price strong,
+.proposal-price span {
+  display: block;
+}
+
+.proposal-price strong {
+  color: var(--color-white);
+  font-size: 2rem;
+}
+
+.proposal-price span {
+  margin-top: 4px;
+  color: var(--color-muted);
+  font-size: 0.72rem;
+}
+
+.proposal-module-list {
+  padding: 22px 0;
+}
+
+.proposal-module-list > span {
+  display: block;
+  margin-bottom: 14px;
+  color: var(--color-muted);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+}
+
+.proposal-module-list > div {
+  display: flex;
+  padding: 9px 0;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.proposal-module-list div span {
+  color: var(--color-text);
+  font-size: 0.78rem;
+}
+
+.proposal-module-list div i {
+  margin-right: 7px;
+  color: #4ade80;
+}
+
+.proposal-module-list div strong {
+  color: var(--color-white);
+  font-size: 0.75rem;
+}
+
+.proposal-module-list p {
+  color: var(--color-muted);
+  font-size: 0.8rem;
+}
+
+.proposal-annual-total {
+  display: flex;
+  padding: 18px;
+  margin-bottom: 25px;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(124, 58, 237, 0.1);
+  border: 1px solid rgba(124, 58, 237, 0.25);
+  border-radius: 11px;
+}
+
+.proposal-annual-total span {
+  color: var(--color-muted);
+  font-size: 0.75rem;
+}
+
+.proposal-annual-total strong {
+  color: #c4b5fd;
+}
+
+.proposal-form {
+  padding: 10px 0;
+}
+
+.proposal-form-heading {
+  margin-bottom: 25px;
+}
+
+.proposal-form-heading h3 {
+  margin-top: 6px;
+  font-size: 1.5rem;
+}
+
+.proposal-form .form-label {
+  color: var(--color-text);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.download-success {
+  display: flex;
+  padding: 13px 15px;
+  margin-top: 20px;
+  gap: 8px;
+  align-items: center;
+  color: #bbf7d0;
+  font-size: 0.78rem;
+  background: rgba(34, 197, 94, 0.08);
+  border: 1px solid rgba(34, 197, 94, 0.25);
+  border-radius: 9px;
+}
+
+.proposal-disclaimer {
+  display: block;
+  margin-top: 12px;
+  color: var(--color-muted);
+  font-size: 0.67rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .proposal-container {
+    padding: 25px 18px;
+  }
+
+  .proposal-preview {
+    padding: 22px 18px;
+  }
+
+  .proposal-annual-total {
+    gap: 10px;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
