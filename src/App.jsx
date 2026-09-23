@@ -1,9 +1,9 @@
-// Import the reusable website components.
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
 import ProductShowcase from "./components/ProductShowcase";
+import InteractiveROICalculator from "./components/InteractiveROICalculator";
 
-// App controls the order of the website sections.
+// App determines the order of the promotional website sections.
 function App() {
   return (
     <>
@@ -12,6 +12,7 @@ function App() {
       <main>
         <HeroSection />
         <ProductShowcase />
+        <InteractiveROICalculator />
       </main>
     </>
   );
