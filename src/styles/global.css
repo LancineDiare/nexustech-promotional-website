@@ -144,3 +144,355 @@ a {
     padding: 70px 0;
   }
 }
+
+/* Reusable cyan text color. */
+.text-cyan {
+  color: var(--color-cyan);
+}
+
+/* =========================
+   NAVIGATION BAR
+   ========================= */
+
+.custom-navbar {
+  padding: 16px 0;
+  background: rgba(11, 15, 25, 0.82);
+  border-bottom: 1px solid var(--color-border);
+  backdrop-filter: blur(18px);
+}
+
+.navbar-brand {
+  color: var(--color-white);
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+}
+
+.navbar-brand:hover {
+  color: var(--color-white);
+}
+
+.brand-icon {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  color: var(--color-background);
+  background: linear-gradient(
+    135deg,
+    var(--color-cyan),
+    var(--color-violet)
+  );
+  border-radius: 10px;
+  place-items: center;
+}
+
+.custom-navbar .nav-link {
+  padding: 8px 12px;
+  color: var(--color-text);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.custom-navbar .nav-link:hover,
+.custom-navbar .nav-link:focus {
+  color: var(--color-cyan);
+}
+
+.navbar-cta {
+  padding: 9px 18px;
+  font-size: 0.9rem;
+}
+
+/* =========================
+   HERO SECTION
+   ========================= */
+
+.hero-section {
+  position: relative;
+  display: flex;
+  min-height: 100vh;
+  padding: 150px 0 90px;
+  overflow: hidden;
+  align-items: center;
+}
+
+/* Create a subtle technical grid behind the hero content. */
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.25;
+  background-image:
+    linear-gradient(rgba(0, 240, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.08) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: linear-gradient(to bottom, black, transparent 90%);
+}
+
+/* Decorative blurred circles. */
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+}
+
+.glow-orb-one {
+  top: 12%;
+  left: -120px;
+  width: 350px;
+  height: 350px;
+  background: rgba(124, 58, 237, 0.22);
+}
+
+.glow-orb-two {
+  right: -100px;
+  bottom: 5%;
+  width: 320px;
+  height: 320px;
+  background: rgba(0, 240, 255, 0.15);
+}
+
+.hero-badge,
+.live-badge {
+  display: inline-flex;
+  gap: 9px;
+  align-items: center;
+  color: var(--color-cyan);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.hero-badge {
+  padding: 9px 14px;
+  background: rgba(0, 240, 255, 0.07);
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  border-radius: 50px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--color-cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--color-cyan);
+}
+
+.hero-title {
+  max-width: 850px;
+  font-size: clamp(2.8rem, 6vw, 5.3rem);
+  font-weight: 800;
+  line-height: 1.03;
+  letter-spacing: -0.045em;
+}
+
+.hero-description {
+  max-width: 670px;
+  color: var(--color-text);
+  font-size: 1.15rem;
+  line-height: 1.8;
+}
+
+.hero-statistics strong,
+.hero-statistics span {
+  display: block;
+}
+
+.hero-statistics strong {
+  color: var(--color-white);
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+}
+
+.hero-statistics span {
+  margin-top: 4px;
+  color: var(--color-muted);
+  font-size: 0.8rem;
+}
+
+/* =========================
+   DASHBOARD PREVIEW
+   ========================= */
+
+.dashboard-preview {
+  position: relative;
+  padding: 24px;
+}
+
+.dashboard-preview::before {
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  content: "";
+  background: linear-gradient(
+    135deg,
+    rgba(0, 240, 255, 0.4),
+    transparent 40%,
+    rgba(124, 58, 237, 0.35)
+  );
+  border-radius: 21px;
+}
+
+.dashboard-header,
+.chart-heading,
+.dashboard-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard-header {
+  margin-bottom: 24px;
+}
+
+.dashboard-header h2 {
+  margin: 4px 0 0;
+  font-size: 1.35rem;
+}
+
+.dashboard-label {
+  color: var(--color-muted);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+}
+
+.live-badge {
+  padding: 7px 10px;
+  background: rgba(0, 240, 255, 0.08);
+  border-radius: 50px;
+  font-size: 0.7rem;
+}
+
+.metric-card,
+.chart-card {
+  background: rgba(4, 8, 16, 0.55);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+}
+
+.metric-card {
+  display: flex;
+  min-height: 145px;
+  padding: 18px;
+  flex-direction: column;
+}
+
+.metric-card i {
+  margin-bottom: 20px;
+  color: var(--color-cyan);
+  font-size: 1.3rem;
+}
+
+.metric-card span {
+  color: var(--color-muted);
+  font-size: 0.78rem;
+}
+
+.metric-card strong {
+  margin-top: 5px;
+  color: var(--color-white);
+  font-size: 1.25rem;
+}
+
+.chart-card {
+  padding: 18px;
+}
+
+.chart-heading span {
+  color: var(--color-muted);
+  font-size: 0.82rem;
+}
+
+.chart-heading strong {
+  color: var(--color-cyan);
+}
+
+.chart-bars {
+  display: flex;
+  height: 145px;
+  margin-top: 20px;
+  gap: 9px;
+  align-items: flex-end;
+}
+
+.chart-bars span {
+  width: 100%;
+  min-height: 10px;
+  background: linear-gradient(
+    to top,
+    var(--color-violet),
+    var(--color-cyan)
+  );
+  border-radius: 5px 5px 2px 2px;
+  box-shadow: 0 0 14px rgba(0, 240, 255, 0.14);
+}
+
+.dashboard-footer {
+  margin-top: 20px;
+  color: var(--color-muted);
+  font-size: 0.72rem;
+}
+
+.dashboard-footer i {
+  color: var(--color-cyan);
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+   ========================= */
+
+@media (max-width: 991px) {
+  .custom-navbar .navbar-collapse {
+    padding: 20px;
+    margin-top: 14px;
+    background: rgba(11, 15, 25, 0.98);
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+  }
+
+  .navbar-cta {
+    display: inline-block;
+    margin-top: 12px;
+  }
+
+  .hero-section {
+    padding-top: 140px;
+    text-align: center;
+  }
+
+  .hero-description {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .hero-statistics {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-title {
+    font-size: 2.6rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+  }
+
+  .hero-statistics strong {
+    font-size: 1.05rem;
+  }
+
+  .hero-statistics span {
+    font-size: 0.68rem;
+  }
+
+  .dashboard-preview {
+    padding: 16px;
+  }
+
+  .dashboard-footer {
+    gap: 10px;
+    flex-direction: column;
+  }
+}
